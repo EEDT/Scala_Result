@@ -2,12 +2,12 @@
 
 ## 简介
 
-一个用Scala实现rust的result的项目，`Result<T,E>`，是rust的一个很实用的工具，你可以这样
+一个用Scala实现rust的result的项目，`Result<T,E>`是rust的一个很实用的工具，你可以这样:
 
 ```Rust
 fn main(){
   let x = Square::creat_square(1, 1).unwrap();
-  println!("{:?}",x);
+  println!("{:?}",x
 }
 #[derive(Debug)]
 struct Square{
