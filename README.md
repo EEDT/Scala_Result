@@ -7,7 +7,7 @@
 ```Rust
 fn main(){
   let x = Square::creat_square(1, 1).unwrap();
-  println!("{:?}",x
+  println!("{:?}",x);
 }
 #[derive(Debug)]
 struct Square{
