@@ -47,6 +47,8 @@ object Square{
 }
 ```
 
+虽然scala提供了`scala.util.Either`，`scala.util.Right`，`scala.util.Left`，但是这个项目提供了`exception`，`unwrap`，`ok`，`err`等实用功能
+
 ## 安装
 
 ### 1.`clone`本项目
