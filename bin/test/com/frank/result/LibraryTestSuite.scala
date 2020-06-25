@@ -8,12 +8,8 @@ import org.junit.runner.RunWith
 import org.scalatestplus.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class LibrarySuite extends AnyFunSuite {
+class LibraryTestSuite extends AnyFunSuite {
   test("Main"){
-    for(i <- Ok(123)) println(i)
-    assert(Ok(123).Ok.getOrElse(1) == 123)
-  }
-  test("err"){
-    assertThrows[RuntimeException](Err("error").exception("error"))
+    assert(Err(123).isErr)
   }
 }

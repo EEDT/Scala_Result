@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.frank.result.LibrarySuite" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-06-25T01:33:21" hostname="easypowerdeMacBook-Pro.local" time="0.037">
-  <properties/>
-  <testcase name="Main" classname="com.frank.result.LibrarySuite" time="0.033"/>
-  <testcase name="err" classname="com.frank.result.LibrarySuite" time="0.003"/>
-  <system-out><![CDATA[123
-]]></system-out>
-  <system-err><![CDATA[]]></system-err>
-</testsuite>
