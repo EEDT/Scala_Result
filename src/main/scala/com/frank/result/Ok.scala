@@ -4,7 +4,7 @@ package com.frank.result
  * @param x 该Ok所包含的值
  * @tparam T x的类型
  */
-case class Ok[T](x:T) extends Result[T,T](x){
+case class Ok[T](x:T) extends Result[T,T]{
 
   /**
    * 返回是否为Ok
@@ -16,7 +16,7 @@ case class Ok[T](x:T) extends Result[T,T](x){
    * @example {{{Err(123).err //Some(123)}}}
    * @return Option[E]
    */
-  def err:Option[T] = None
+  def err:Option[Nothing] = None
   /**
    * 测试一个result是否包含给定值
    * 这相当与{{{someResult.x == elem}}}

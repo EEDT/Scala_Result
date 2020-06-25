@@ -1,5 +1,5 @@
 package com.frank.result
-abstract class Result[T,E](x:T) extends Iterable[T]{
+abstract class Result[T,E] extends Iterable[T]{
   def isOK:Boolean
   def isErr:Boolean
   def err:Option[E]

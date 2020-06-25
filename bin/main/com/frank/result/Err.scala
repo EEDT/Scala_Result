@@ -5,7 +5,7 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[E](x:E) extends Result[E,E](x){
+case class Err[E](x:E) extends Result[Nothing,E]{
   /**
    * 返回是否为Ok
    * @return Boolean
