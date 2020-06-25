@@ -1,0 +1,15 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="EmptyParenMethodAccessedAsParameterless" enabled="false" level="TYPO" enabled_by_default="false" />
+    <inspection_tool class="EmptyParenMethodOverriddenAsParameterless" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="LanguageFeature" enabled="true" level="TYPO" enabled_by_default="true" />
+    <inspection_tool class="NameBooleanParameters" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="NonAsciiCharacters" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="RedundantBlock" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="ReferenceMustBePrefixed" enabled="true" level="TYPO" enabled_by_default="true" />
+    <inspection_tool class="ScalaDocParserErrorInspection" enabled="true" level="TYPO" enabled_by_default="true" />
+    <inspection_tool class="ScalaUnusedExpression" enabled="true" level="ERROR" enabled_by_default="true" />
+    <inspection_tool class="TypeAnnotation" enabled="false" level="TYPO" enabled_by_default="false" />
+  </profile>
+</component>
