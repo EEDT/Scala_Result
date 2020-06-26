@@ -10,7 +10,7 @@ import org.scalatestplus.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class LibraryTestSuite extends AnyFunSuite {
   test("Main"){
-    def toInt(x:String): Result[_ >: Int with String, _ <: String] = {
+    def toInt(x:String):Result[Int,String] = {
       try Ok(x.toInt) catch {
         case _:NumberFormatException => Err("error")
       }

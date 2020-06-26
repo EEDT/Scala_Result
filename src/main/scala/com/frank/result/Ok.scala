@@ -4,7 +4,7 @@ package com.frank.result
  * @param x 该Ok所包含的值
  * @tparam T x的类型
  */
-case class Ok[T](x:T) extends Result[T,T]{
+case class Ok[T,E](x:T) extends Result[T,E]{
 
   /**
    * 返回是否为Ok
@@ -26,11 +26,6 @@ case class Ok[T](x:T) extends Result[T,T]{
    */
   def contains(x: T): Boolean = this.x == x
   /**
-   * 返回迭代器
-   * @return Iterator[T]
-   */
-  def iterator = Iterator(x)
-  /**
    * 如果该result为Err，就抛出RuntimeException，消息为msg
    * @param msg 消息
    */
@@ -46,7 +41,7 @@ case class Ok[T](x:T) extends Result[T,T]{
    * @param elseValue T 否则返回的值
    * @return T
    */
-  def okOrElse(elseValue:T) = this.Ok.getOrElse(elseValue)
+  def okOrElse(elseValue:T):T = this.Ok.getOrElse(elseValue)
   /**
    * 是否为Err，如果是Err，则返回Some(x)，否则返回None
    * @example {{{Err(123).err //Some(123)}}}
