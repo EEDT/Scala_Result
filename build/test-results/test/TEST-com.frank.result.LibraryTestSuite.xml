@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.frank.result.LibraryTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-26T00:54:05" hostname="easypowerdeMacBook-Pro.local" time="0.029">
+<testsuite name="com.frank.result.LibraryTestSuite" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-06-26T01:48:59" hostname="easypowerdeMacBook-Pro.local" time="0.047">
   <properties/>
-  <testcase name="Map" classname="com.frank.result.LibraryTestSuite" time="0.029"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="Map" classname="com.frank.result.LibraryTestSuite" time="0.047"/>
+  <system-out><![CDATA[100
+]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
