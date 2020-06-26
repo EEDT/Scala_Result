@@ -5,7 +5,7 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[E](x:E) extends Result[E,E](x){
+case class Err[T,E](x:E) extends Result[T,E]{
   /**
    * 返回是否为Ok
    * @return Boolean
@@ -47,11 +47,6 @@ case class Err[E](x:E) extends Result[E,E](x){
    * @return T
    */
   def okOrElse(elseValue: E): E = this.Ok.getOrElse(elseValue)
-  /**
-   * 返回迭代器
-   * @return Iterator[E]
-   */
-  def iterator: Iterator[E] = Iterator(x)
   /**
    * 返回是否为Err
    * @return boolean

@@ -10,6 +10,11 @@ import org.scalatestplus.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class LibraryTestSuite extends AnyFunSuite {
   test("Main"){
-    assert(Err(123).isErr)
+    def toInt(x:String):Result[Int,String] = {
+      try Ok(x.toInt) catch {
+        case _:NumberFormatException => Err("error")
+      }
+    }
+    assert(toInt("123").unwrap == 123)
   }
 }
