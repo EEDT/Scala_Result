@@ -10,6 +10,8 @@ import org.scalatestplus.junit.JUnitRunner
 @RunWith(classOf[JUnitRunner])
 class LibraryTestSuite extends AnyFunSuite {
   test("Map"){
-
+    val y = for(i <- Ok(10)) yield i + 1
+    Ok(100).foreach(println)
+    assert(y.unwrap == 11)
   }
 }
