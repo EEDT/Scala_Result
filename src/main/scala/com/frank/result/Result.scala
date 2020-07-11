@@ -86,56 +86,32 @@ abstract class Result[T,E]{
     case Ok(x) => Iterator(x)
     case Err(x) => Iterator(x)
   }
-
+  type TypeOf
+  type M[B]
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
    * @tparam U 返回
    * @return result
    */
-  def map[U](f:T => U):Result[U,E] = this match {
-    case Ok(x) => Ok(f(x))
-    case _ => this.asInstanceOf[Result[U,E]]
-  }
-
-  /**
-   * 如果该result是ok且f(this)为true，返回该result
-   * 否则返回else
-   * @param f 函数
-   * @param Else 否则
-   * @return result
-   */
-  def filter(f:T => Boolean,Else:Result[T,E]):Result[T,E] = this match {
-    case Ok(x) if f(x) => Ok(x)
-    case _ => Else
-  }
-
+  def map[U](f:TypeOf => U):M[U]
   /**
    * 如果该result为ok且f(x)为true，返回true
    * 否则返回false
    * @param f 函数
    * @return
    */
-  def exists(f:T => Boolean) = this match {
-    case Err(_) => false
-    case Ok(x) => f(x)
-  }
+  def exists(f:TypeOf => Boolean):Boolean
 
   /**
    * 同[[scala.util.Either]]的flatmap
    */
-  def flatMap(f:T => Result[T,E]) = this match {
-    case Err(_) => this.asInstanceOf[Result[T,E]]
-    case Ok(x) => f(x)
-  }
+  def flatMap[U](f:TypeOf => U):M[U]
 
   /**
    * 对于该result所包含的值执行f()
    * @param f 函数
    */
-  def foreach(f:T => Unit) = this match {
-    case Ok(x) => f(x)
-    case _ => creatUnitValue()
-  }
+  def foreach(f:TypeOf => Unit):Unit
   protected def creatUnitValue() = ()
 }
