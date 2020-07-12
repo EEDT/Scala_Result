@@ -30,7 +30,15 @@ case class Ok[T,E](x:T) extends Result[T,E]{
   def foreach(f: T => Unit): Unit = f(x)
 
   /**
-   * 同[[scala.util.Either]]的flatmap
+   * 将该result转为seq后flatmap
    */
-  def flatMap[U](f: T => U): M[U] = this.map(f)
+  def flatMap[U](f: T => IterableOnce[T]):Seq[TypeOf] = {
+    this.toSeq.flatMap(f)
+  }
+
+  /**
+   * 创建seq
+   * @return seq
+   */
+  def toSeq: Seq[T] = Seq(x)
 }

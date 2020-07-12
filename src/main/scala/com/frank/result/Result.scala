@@ -14,15 +14,23 @@ abstract class Result[T,E]{
     case _:Err[_,_] => false
   }
   /**
-   * 测试一个result是否包含给定值
+   * 测试一个result是否包含给定值且该result为OK
    * @param x 测试值
    * @return boolean
    */
   def contains(x:T):Boolean = this match {
     case Ok(x) => x == x
-    case Err(x) => x == x
+    case _ => false
   }
-
+  /**
+   * 测试一个result是否包含给定值且该result为Err
+   * @param x 测试值
+   * @return boolean
+   */
+  def containsErr(x:E):Boolean = this match {
+    case Err(x) => x == x
+    case Ok(_) => false
+  }
   /**
    * 是否为err
    * @return boolean
@@ -104,14 +112,20 @@ abstract class Result[T,E]{
   def exists(f:TypeOf => Boolean):Boolean
 
   /**
-   * 同[[scala.util.Either]]的flatmap
+   * 将该result转为seq后flatmap
    */
-  def flatMap[U](f:TypeOf => U):M[U]
+  def flatMap[U](f:TypeOf => IterableOnce[TypeOf]):Seq[TypeOf]
 
   /**
    * 对于该result所包含的值执行f()
    * @param f 函数
    */
   def foreach(f:TypeOf => Unit):Unit
+
+  /**
+   * 创建seq
+   * @return seq
+   */
+  def toSeq:Seq[TypeOf]
   protected def creatUnitValue() = ()
 }

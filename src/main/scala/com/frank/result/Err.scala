@@ -31,7 +31,15 @@ case class Err[T, E](x: E) extends Result[T, E] {
   def foreach(f: E => Unit): Unit = f(x)
 
   /**
-   * 同[[scala.util.Either]]的flatmap
+   * 将该result转为seq后flatmap
    */
-  def flatMap[U](f: E => U):M[U] = this.map(f)
+  def flatMap[U](f: E => IterableOnce[E]):Seq[TypeOf] = {
+    this.toSeq.flatMap(f)
+  }
+
+  /**
+   * 创建seq
+   * @return seq
+   */
+  def toSeq: Seq[E] = Seq(x)
 }

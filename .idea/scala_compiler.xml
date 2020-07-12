@@ -6,7 +6,7 @@
       <option name="deprecationWarnings" value="true" />
       <option name="uncheckedWarnings" value="true" />
       <parameters>
-        <parameter value="-target:jvm-11" />
+        <parameter value="-target:jvm-14" />
       </parameters>
     </profile>
   </component>
