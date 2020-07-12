@@ -35,7 +35,7 @@ class LibraryTestSuite extends AnyFunSuite {
     })
     assert(i == 100)
   }
-  test("unwarp"){
+  test("unwrap"){
     def toInt(x:String):Result[Int,NumberFormatException] =
       try Ok(x.toInt) catch {
       case ex:NumberFormatException => Err(ex)
