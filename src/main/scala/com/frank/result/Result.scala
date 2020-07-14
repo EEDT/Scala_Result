@@ -4,7 +4,7 @@ package com.frank.result
  * @tparam T 正常
  * @tparam E 错误
  */
-abstract class Result[T,E]{
+abstract class Result[T,E]  {
   /**
    * 返回是否为ok
    * @return boolean

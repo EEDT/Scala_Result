@@ -64,8 +64,10 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     assertThrows[RuntimeException](Ok(10).exceptionErr("error"))
   }
   test("unwrap or default"){
-    val default = 10
-    val err = Err[Int,NullPointerException](new NullPointerException)
-    assert(err.unwrapOrDefault(default) == default)
+    def toInteger(s:String):Result[Int,NumberFormatException] = try Ok(s.toInt) catch {
+      case ex:NumberFormatException => Err(ex)
+    }
+    val result = toInteger("123a").unwrapOrDefault(123)
+    assert(result == 123)
   }
 }
