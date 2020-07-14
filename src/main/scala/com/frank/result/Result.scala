@@ -59,14 +59,32 @@ abstract class Result[T,E]{
   }
 
   /**
+   * 如果不是err，抛出[[java.lang.RuntimeException]]
+   * @param msg 异常信息
+   */
+  def exceptionErr(msg:String):Unit = this match {
+    case Err(_) => creatUnitValue()
+    case _ => throw new RuntimeException(msg)
+  }
+  /**
    * 如果不是ok，抛出[[java.lang.RuntimeException]]，否则返回ok中包含的值
    * @return
    */
   def unwrap:T = this match {
     case Ok(x) => x
-    case Err(_) => throw new RuntimeException("error")
+    case Err(_) => throw new RuntimeException("not ok")
   }
-
+  /**
+   * 如果不是err，抛出[[java.lang.RuntimeException]]，否则返回err中包含的值
+   * @return
+   */
+  def unwrapErr:E = this match {
+    case Err(x) => x
+    case Ok(_) => throw new RuntimeException("not err")
+  }
+  def unwrapOrDefault(default:T):T = try this.unwrap catch {
+    case _:RuntimeException => default
+  }
   /**
    * 如果是OK，返回所包含的值，否则返回elseValue
    * @param elseValue 否则返回的值

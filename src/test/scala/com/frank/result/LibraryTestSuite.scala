@@ -3,11 +3,12 @@
  */
 package com.frank.result
 import org.scalatest.funsuite.AnyFunSuite
+import org.scalatest.diagrams._
 import org.junit.runner.RunWith
 import org.scalatestplus.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
-class LibraryTestSuite extends AnyFunSuite {
+class LibraryTestSuite extends AnyFunSuite with Diagrams {
   test("exists"){
     assert(Ok(10).exists(_ == 10))
   }
@@ -36,11 +37,7 @@ class LibraryTestSuite extends AnyFunSuite {
     assert(i == 100)
   }
   test("unwrap"){
-    def toInt(x:String):Result[Int,NumberFormatException] =
-      try Ok(x.toInt) catch {
-      case ex:NumberFormatException => Err(ex)
-    }
-    assert(toInt("10").unwrap == 10)
+    assert(Ok(10).unwrap == 10)
   }
   test("exception"){
     assertThrows[RuntimeException](Err("str").exception("error"))
@@ -59,5 +56,16 @@ class LibraryTestSuite extends AnyFunSuite {
   }
   test("ok_else"){
     assert(Ok(20).okOrElse(0) == 20)
+  }
+  test("unwrap err"){
+    assert(Err(10).unwrapErr == 10)
+  }
+  test("except err"){
+    assertThrows[RuntimeException](Ok(10).exceptionErr("error"))
+  }
+  test("unwrap or default"){
+    val default = 10
+    val err = Err[Int,NullPointerException](new NullPointerException)
+    assert(err.unwrapOrDefault(default) == default)
   }
 }

@@ -5,7 +5,6 @@
  * For more details take a look at the Scala plugin chapter in the Gradle
  * User Manual available at https://docs.gradle.org/6.5/userguide/scala_plugin.html
  */
-
 plugins {
   // Apply the scala plugin to add support for Scala
   id 'scala'
@@ -17,6 +16,11 @@ plugins {
 repositories {
   // Use jcenter for resolving dependencies.
   // You can declare any Maven/Ivy/file repository here.
+  mavenCentral()
+  mavenLocal()
+  maven{
+    url 'https://mirrors.huaweicloud.com/repository/maven/'
+  }
   jcenter()
 }
 
