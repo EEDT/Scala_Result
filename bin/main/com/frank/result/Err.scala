@@ -5,51 +5,41 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[T,E](x:E) extends Result[T,E]{
+case class Err[T, E](x: E) extends Result[T, E] {
+  override type TypeOf = E
+  override type M[B] = Result[TypeOf,B]
   /**
-   * 返回是否为Ok
-   * @return Boolean
+   * 同[[scala.util.Either]]中的map方法
+   * @param f 函数
+   * @tparam U 返回
+   * @return result
    */
-  def isOK: Boolean = false
+  override def map[U](f: E => U):M[U] = Err(f(x))
+
   /**
-   * 测试一个result是否包含给定值
-   * 这相当与{{{someResult.x == elem}}}
-   * @example {{{Err(123).contains(123) //false}}}
-   * @param x 用来判断的数字
-   * @return boolean
+   * 如果该result为ok且f(x)为true，返回true
+   * 否则返回false
+   * @param f 函数
+   * @return
    */
-  def contains(x: E): Boolean = this.x == x
+  def exists(f: E => Boolean): Boolean = f(x)
+
   /**
-   * 是否为Err，如果是Err，则返回Some(x)，否则返回None
-   * @example {{{Err(123).err //Some(123)}}}
-   * @return Option[E]
+   * 对于该result所包含的值执行f()
+   * @param f 函数
    */
-  def err: Option[E] = Some(x)
+  def foreach(f: E => Unit): Unit = f(x)
+
   /**
-   * 如果该result为Err，就抛出RuntimeException，消息为msg
-   * @param msg 消息
+   * 将该result转为seq后flatmap
    */
-  def exception(msg: String): Unit = throw new RuntimeException(msg)
+  def flatMap[U](f: E => IterableOnce[E]):Seq[TypeOf] = {
+    this.toSeq.flatMap(f)
+  }
+
   /**
-   * 如果该result为Err，就抛出RuntimeException，否则返回所包含的值
-   * @return E
+   * 创建seq
+   * @return seq
    */
-  def unwrap: E = throw new NoSuchElementException("Error!")
-  /**
-   * 是否为Ok，如果是Ok，则返回Some(x)，否则返回None
-   * @example {{{Err(123).Ok //None}}}
-   * @return Option[E]
-   */
-  def Ok: Option[E] = None
-  /**
-   * 如果该result为ok，返回所包含的值，否则返回elseValue
-   * @param elseValue T 否则返回的值
-   * @return T
-   */
-  def okOrElse(elseValue: E): E = this.Ok.getOrElse(elseValue)
-  /**
-   * 返回是否为Err
-   * @return boolean
-   */
-  def isErr: Boolean = true
+  def toSeq: Seq[E] = Seq(x)
 }

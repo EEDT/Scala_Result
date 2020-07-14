@@ -4,59 +4,41 @@ package com.frank.result
  * @param x 该Ok所包含的值
  * @tparam T x的类型
  */
-case class Ok[T](x:T) extends Result[T,T](x){
+case class Ok[T,E](x:T) extends Result[T,E]{
+  override type TypeOf = T
+  override type M[B] = Result[B,TypeOf]
+  /**
+   * 同[[scala.util.Either]]中的map方法
+   * @param f 函数
+   * @tparam U 返回
+   * @return result
+   */
+  override def map[U](f: T => U):M[U] = Ok(f(x))
 
   /**
-   * 返回是否为Ok
-   * @return Boolean
+   * 如果该result为ok且f(x)为true，返回true
+   * 否则返回false
+   * @param f 函数
+   * @return
    */
-  def isOK: Boolean = true
-  /**
-   * 是否为Err，如果是Err，则返回Some(x)，否则返回None
-   * @example {{{Err(123).err //Some(123)}}}
-   * @return Option[E]
-   */
-  def err:Option[T] = None
-  /**
-   * 测试一个result是否包含给定值
-   * 这相当与{{{someResult.x == elem}}}
-   * @example {{{Err(123).contains(123) //false}}}
-   * @param x 用来判断的数字
-   * @return boolean
-   */
-  def contains(x: T): Boolean = this.x == x
-  /**
-   * 返回迭代器
-   * @return Iterator[T]
-   */
-  def iterator = Iterator(x)
-  /**
-   * 如果该result为Err，就抛出RuntimeException，消息为msg
-   * @param msg 消息
-   */
-  def exception(msg: String): Unit = super.creatUnitValue()
-  /**
-   * 如果该result为Err，就抛出RuntimeException，否则返回所包含的值
-   * @return E
-   */
-  def unwrap: T = x
+  def exists(f: T => Boolean):Boolean = f(x)
 
   /**
-   * 如果该result为ok，返回所包含的值，否则返回elseValue
-   * @param elseValue T 否则返回的值
-   * @return T
+   * 对于该result所包含的值执行f()
+   * @param f 函数
    */
-  def okOrElse(elseValue:T) = this.Ok.getOrElse(elseValue)
-  /**
-   * 是否为Err，如果是Err，则返回Some(x)，否则返回None
-   * @example {{{Err(123).err //Some(123)}}}
-   * @return Option[E]
-   */
-  def Ok: Option[T] = Some(x)
+  def foreach(f: T => Unit): Unit = f(x)
 
   /**
-   * 返回是否为Err
-   * @return boolean
+   * 将该result转为seq后flatmap
    */
-  def isErr: Boolean = false
+  def flatMap[U](f: T => IterableOnce[T]):Seq[TypeOf] = {
+    this.toSeq.flatMap(f)
+  }
+
+  /**
+   * 创建seq
+   * @return seq
+   */
+  def toSeq: Seq[T] = Seq(x)
 }
