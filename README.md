@@ -67,3 +67,7 @@ implementation files 'path_of_result_jar/result.jar'
 ```
 
 - `path_of_result_jar`:放jar的路径
+
+## 文档
+
+[](https://eedt.github.io/result_docs/)
