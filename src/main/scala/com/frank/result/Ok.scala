@@ -8,7 +8,7 @@ case class Ok[T,E](x:T) extends Result[T,E]{
   override type TypeOf = T
   override type M[B] = Result[B,TypeOf]
   /**
-   * 同[[scala.util.Either]]中的map方法
+   * 同[[_root_.scala.util.Either]]中的map方法
    * @param f 函数
    * @tparam U 返回
    * @return result

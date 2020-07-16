@@ -1,6 +1,6 @@
 package com.frank.result
 /**
- * 一个为[[scala.util.Either]]提供了更多特性的库
+ * 一个为[[_root_.scala.util.Either]]提供了更多特性的库
  * @tparam T 正常
  * @tparam E 错误
  */
@@ -50,7 +50,7 @@ abstract class Result[T,E]  {
   }
 
   /**
-   * 如果不是ok，抛出[[java.lang.RuntimeException]]
+   * 如果不是ok，抛出[[_root_.java.lang.RuntimeException]]
    * @param msg 异常信息
    */
   def exception(msg:String):Unit = this match {
@@ -59,7 +59,7 @@ abstract class Result[T,E]  {
   }
 
   /**
-   * 如果不是err，抛出[[java.lang.RuntimeException]]
+   * 如果不是err，抛出[[_root_.java.lang.RuntimeException]]
    * @param msg 异常信息
    */
   def exceptionErr(msg:String):Unit = this match {
@@ -67,7 +67,7 @@ abstract class Result[T,E]  {
     case _ => throw new RuntimeException(msg)
   }
   /**
-   * 如果不是ok，抛出[[java.lang.RuntimeException]]，否则返回ok中包含的值
+   * 如果不是ok，抛出[[_root_.java.lang.RuntimeException]]，否则返回ok中包含的值
    * @return
    */
   def unwrap:T = this match {
@@ -75,7 +75,7 @@ abstract class Result[T,E]  {
     case Err(_) => throw new RuntimeException("not ok")
   }
   /**
-   * 如果不是err，抛出[[java.lang.RuntimeException]]，否则返回err中包含的值
+   * 如果不是err，抛出[[_root_.java.lang.RuntimeException]]，否则返回err中包含的值
    * @return
    */
   def unwrapErr:E = this match {
