@@ -5,6 +5,8 @@ package com.frank.result
  * @tparam E 错误
  */
 abstract class Result[T,E]  {
+  type TypeOf
+  type M[B]
   /**
    * 返回是否为ok
    * @return boolean
@@ -112,8 +114,6 @@ abstract class Result[T,E]  {
     case Ok(x) => Iterator(x)
     case Err(x) => Iterator(x)
   }
-  type TypeOf
-  type M[B]
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
