@@ -5,7 +5,17 @@ package com.frank.result
  * @tparam T x的类型
  */
 case class Ok[T,E](x:T) extends Result[T,E]{
+  /**
+   * Type of this.x
+   * for example
+   * {{{
+   *   override def map[U](f: E => U):M[U] = Err(f(x))
+   * }}}
+   */
   override type TypeOf = T
+  /**
+   * return type of map
+   */
   override type M[B] = Result[B,TypeOf]
   /**
    * 同[[_root_.scala.util.Either]]中的map方法
