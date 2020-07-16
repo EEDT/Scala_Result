@@ -6,7 +6,17 @@ package com.frank.result
  * @tparam E x的类型
  */
 case class Err[T, E](x: E) extends Result[T, E] {
+  /**
+   * Type of this.x
+   * for example
+   * {{{
+   *   override def map[U](f: E => U):M[U] = Err(f(x))
+   * }}}
+   */
   override type TypeOf = E
+  /**
+   * return type of map
+   */
   override type M[B] = Result[TypeOf,B]
   /**
    * 同[[_root_.scala.util.Either]]中的map方法
