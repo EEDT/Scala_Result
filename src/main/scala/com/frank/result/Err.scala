@@ -5,7 +5,7 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
+case class Err[T, E](private val x: E) extends AnyVal with Result[T, E] {
   /**
    * Type of this.x
    * for example
