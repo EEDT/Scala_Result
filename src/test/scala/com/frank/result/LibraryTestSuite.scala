@@ -70,4 +70,8 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     val result = toInteger("123a").unwrapOrDefault(123)
     assert(result == 123)
   }
+  test("or_else"){
+    val result = Err[Int,Int](10)
+    assert(result.unwrapOrElse(_ => 10) == 10)
+  }
 }

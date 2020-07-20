@@ -158,7 +158,7 @@ trait Result[T,E] extends Any{
    * @tparam U 结果
    * @return [[com.frank.result.Result[T,E]]]
    */
-  def mapOrElse[U](f:T => U, default:E => U):Result[T,E] =
+  def mapOrElse[U](f:T => U, default:E => U):Result[U,U] =
     this match {
       case Err(x) => Err(default(x))
       case Ok(x) => Ok(f(x))
