@@ -17,11 +17,11 @@ trait Result[T,E] extends Any{
   }
   /**
    * 测试一个result是否包含给定值且该result为OK
-   * @param x 测试值
+   * @param i 测试值
    * @return boolean
    */
-  def contains(x:T):Boolean = this match {
-    case Ok(x) => x == x
+  def contains(i:T):Boolean = this match {
+    case Ok(x) => x == i
     case _ => false
   }
   /**

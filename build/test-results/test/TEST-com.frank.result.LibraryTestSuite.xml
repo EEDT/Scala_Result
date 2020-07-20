@@ -1,23 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.frank.result.LibraryTestSuite" tests="17" skipped="0" failures="0" errors="0" timestamp="2020-07-20T03:57:47" hostname="easypowerdeMacBook-Pro.local" time="0.055">
+<testsuite name="com.frank.result.LibraryTestSuite" tests="17" skipped="0" failures="1" errors="0" timestamp="2020-07-20T04:25:05" hostname="easypowerdeMacBook-Pro.local" time="0.107">
   <properties/>
-  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.023"/>
+  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.022"/>
   <testcase name="map" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.056">
+    <failure message="org.scalatest.exceptions.TestFailedException: &#10;&#10;assert(x.contains(11))&#10;       | |        |&#10;       | false    11&#10;       Ok(10)&#10;" type="org.scalatest.exceptions.TestFailedException">org.scalatest.exceptions.TestFailedException: 
+
+assert(x.contains(11))
+       | |        |
+       | false    11
+       Ok(10)
+
+	at org.scalatest.Assertions.newAssertionFailedException(Assertions.scala:472)
+	at org.scalatest.Assertions.newAssertionFailedException$(Assertions.scala:471)
+	at org.scalatest.diagrams.Diagrams$.newAssertionFailedException(Diagrams.scala:277)
+	at org.scalatest.diagrams.Diagrams$DiagramsHelper.macroAssert(Diagrams.scala:361)
+	at com.frank.result.LibraryTestSuite.$anonfun$new$5(LibraryTestSuite.scala:21)
+	at org.scalatest.OutcomeOf.outcomeOf(OutcomeOf.scala:85)
+	at org.scalatest.OutcomeOf.outcomeOf$(OutcomeOf.scala:83)
+	at org.scalatest.OutcomeOf$.outcomeOf(OutcomeOf.scala:104)
+	at org.scalatest.Transformer.apply(Transformer.scala:22)
+	at org.scalatest.Transformer.apply(Transformer.scala:20)
+	at org.scalatest.funsuite.AnyFunSuiteLike$$anon$1.apply(AnyFunSuiteLike.scala:189)
+	at org.scalatest.TestSuite.withFixture(TestSuite.scala:196)
+	at org.scalatest.TestSuite.withFixture$(TestSuite.scala:195)
+	at org.scalatest.funsuite.AnyFunSuite.withFixture(AnyFunSuite.scala:1562)
+	at org.scalatest.funsuite.AnyFunSuiteLike.invokeWithFixture$1(AnyFunSuiteLike.scala:187)
+	at org.scalatest.funsuite.AnyFunSuiteLike.$anonfun$runTest$1(AnyFunSuiteLike.scala:199)
+	at org.scalatest.SuperEngine.runTestImpl(Engine.scala:306)
+	at org.scalatest.funsuite.AnyFunSuiteLike.runTest(AnyFunSuiteLike.scala:199)
+	at org.scalatest.funsuite.AnyFunSuiteLike.runTest$(AnyFunSuiteLike.scala:181)
+	at org.scalatest.funsuite.AnyFunSuite.runTest(AnyFunSuite.scala:1562)
+	at org.scalatest.funsuite.AnyFunSuiteLike.$anonfun$runTests$1(AnyFunSuiteLike.scala:232)
+	at org.scalatest.SuperEngine.$anonfun$runTestsInBranch$1(Engine.scala:413)
+	at scala.collection.immutable.List.foreach(List.scala:333)
+	at org.scalatest.SuperEngine.traverseSubNodes$1(Engine.scala:401)
+	at org.scalatest.SuperEngine.runTestsInBranch(Engine.scala:396)
+	at org.scalatest.SuperEngine.runTestsImpl(Engine.scala:475)
+	at org.scalatest.funsuite.AnyFunSuiteLike.runTests(AnyFunSuiteLike.scala:232)
+	at org.scalatest.funsuite.AnyFunSuiteLike.runTests$(AnyFunSuiteLike.scala:231)
+	at org.scalatest.funsuite.AnyFunSuite.runTests(AnyFunSuite.scala:1562)
+	at org.scalatest.Suite.run(Suite.scala:1112)
+	at org.scalatest.Suite.run$(Suite.scala:1094)
+	at org.scalatest.funsuite.AnyFunSuite.org$scalatest$funsuite$AnyFunSuiteLike$$super$run(AnyFunSuite.scala:1562)
+	at org.scalatest.funsuite.AnyFunSuiteLike.$anonfun$run$1(AnyFunSuiteLike.scala:236)
+	at org.scalatest.SuperEngine.runImpl(Engine.scala:535)
+	at org.scalatest.funsuite.AnyFunSuiteLike.run(AnyFunSuiteLike.scala:236)
+	at org.scalatest.funsuite.AnyFunSuiteLike.run$(AnyFunSuiteLike.scala:235)
+	at org.scalatest.funsuite.AnyFunSuite.run(AnyFunSuite.scala:1562)
+	at org.scalatestplus.junit.JUnitRunner.run(JUnitRunner.scala:99)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.runTestClass(JUnitTestClassExecutor.java:110)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:58)
+	at org.gradle.api.internal.tasks.testing.junit.JUnitTestClassExecutor.execute(JUnitTestClassExecutor.java:38)
+	at org.gradle.api.internal.tasks.testing.junit.AbstractJUnitTestClassProcessor.processTestClass(AbstractJUnitTestClassProcessor.java:62)
+	at org.gradle.api.internal.tasks.testing.SuiteTestClassProcessor.processTestClass(SuiteTestClassProcessor.java:51)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.dispatch.ContextClassLoaderDispatch.dispatch(ContextClassLoaderDispatch.java:33)
+	at org.gradle.internal.dispatch.ProxyDispatchAdapter$DispatchingInvocationHandler.invoke(ProxyDispatchAdapter.java:94)
+	at com.sun.proxy.$Proxy2.processTestClass(Unknown Source)
+	at org.gradle.api.internal.tasks.testing.worker.TestWorker.processTestClass(TestWorker.java:119)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:36)
+	at org.gradle.internal.dispatch.ReflectionDispatch.dispatch(ReflectionDispatch.java:24)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:182)
+	at org.gradle.internal.remote.internal.hub.MessageHubBackedObjectConnection$DispatchWrapper.dispatch(MessageHubBackedObjectConnection.java:164)
+	at org.gradle.internal.remote.internal.hub.MessageHub$Handler.run(MessageHub.java:414)
+	at org.gradle.internal.concurrent.ExecutorPolicy$CatchAndRecordFailures.onExecute(ExecutorPolicy.java:64)
+	at org.gradle.internal.concurrent.ManagedExecutorImpl$1.run(ManagedExecutorImpl.java:48)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:630)
+	at org.gradle.internal.concurrent.ThreadFactoryImpl$ManagedThreadRunnable.run(ThreadFactoryImpl.java:56)
+	at java.base/java.lang.Thread.run(Thread.java:832)
+</failure>
+  </testcase>
   <testcase name="containsErr" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
-  <testcase name="foreach" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
+  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.005"/>
+  <testcase name="foreach" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
   <testcase name="unwrap" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <testcase name="exception" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="isOk" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="isErr" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="isOk" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="isErr" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
   <testcase name="err" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
-  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
-  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <testcase name="unwrap err" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
   <testcase name="except err" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="unwrap or default" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="or_else" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
+  <testcase name="unwrap or default" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="or_else" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
