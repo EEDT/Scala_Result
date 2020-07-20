@@ -4,7 +4,7 @@ package com.frank.result
  * @tparam T 正常
  * @tparam E 错误
  */
-abstract class Result[T,E]  {
+trait Result[T,E] extends Any{
   type TypeOf
   type M[B]
   /**
@@ -50,7 +50,6 @@ abstract class Result[T,E]  {
     case Err(x) => Some(x)
     case _ => None
   }
-
   /**
    * 如果不是ok，抛出[[_root_.java.lang.RuntimeException]]
    * @param msg 异常信息
@@ -77,16 +76,30 @@ abstract class Result[T,E]  {
     case Err(_) => throw new RuntimeException("not ok")
   }
   /**
-   * 如果不是err，抛出[[_root_.java.lang.RuntimeException]]，否则返回err中包含的值
+   * 如果不是err，抛出[[java.lang.RuntimeException]]，否则返回err中包含的值
    * @return
    */
   def unwrapErr:E = this match {
     case Err(x) => x
     case Ok(_) => throw new RuntimeException("not err")
   }
+  /**
+   * 如果不是ok，返回default，否则返回ok中包含的值
+   */
   def unwrapOrDefault(default:T):T = try this.unwrap catch {
     case _:RuntimeException => default
   }
+
+  /**
+   * 如果是Ok返回ok所包含的值，否则返回e(err所包含的值)
+   * @param e 函数
+   * @return T
+   */
+  def unwrapOrElse(e:E => T):T =
+    this match {
+      case Err(x) => e(x)
+      case Ok(x) => x
+    }
   /**
    * 如果是OK，返回所包含的值，否则返回elseValue
    * @param elseValue 否则返回的值
@@ -110,10 +123,7 @@ abstract class Result[T,E]  {
    * 返回迭代器
    * @return iterator
    */
-  def iterator() = this match {
-    case Ok(x) => Iterator(x)
-    case Err(x) => Iterator(x)
-  }
+  def iterator():Iterator[TypeOf]
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
@@ -134,6 +144,47 @@ abstract class Result[T,E]  {
    */
   def flatMap[U](f:TypeOf => IterableOnce[TypeOf]):Seq[TypeOf]
 
+  /**
+   * 将该result转为seq后flatten
+   * @param f 函数
+   * @return seq
+   */
+  def flatten(implicit f:TypeOf => IterableOnce[TypeOf]):Seq[TypeOf]
+
+  /**
+   * 如果该result为Ok则执行函数f，否则执行函数default
+   * @param f 为Ok则执行的函数
+   * @param default 为Err时执行的函数
+   * @tparam U 结果
+   * @return [[com.frank.result.Result[T,E]]]
+   */
+  def mapOrElse[U](f:T => U, default:E => U):Result[T,E] =
+    this match {
+      case Err(x) => Err(default(x))
+      case Ok(x) => Ok(f(x))
+    }
+
+  /**
+   * 如果该result为Ok则返回this，否则返回default
+   * @param result 否则的值
+   * @return [[com.frank.result.Result]]
+   */
+  def or(result: Result[T,E]):Result[T,E] =
+    this match {
+      case Err(_) => result
+      case _ => this
+    }
+
+  /**
+   *  如果该result为Ok则返回this，否则返回对该result所包含的值执行func
+   * @param func 函数
+   * @return [[com.frank.result.Result]]
+   */
+  def orElse(func:E => Result[T,E]):Result[T,E] =
+    this match {
+      case Err(x) => func(x)
+      case Ok(_) => this
+    }
   /**
    * 对于该result所包含的值执行f()
    * @param f 函数

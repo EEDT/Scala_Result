@@ -5,7 +5,7 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[T, E](x: E) extends Result[T, E] {
+case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
   /**
    * Type of this.x
    * for example
@@ -52,4 +52,18 @@ case class Err[T, E](x: E) extends Result[T, E] {
    * @return seq
    */
   def toSeq: Seq[E] = Seq(x)
+
+  /**
+   * 将该result转为seq后flatten
+   * @param f 函数
+   * @return seq
+   */
+  def flatten(implicit f: E => IterableOnce[E]): Seq[E] =
+    this.toSeq.flatten(f)
+
+  /**
+   * 返回迭代器
+   * @return iterator
+   */
+  def iterator(): Iterator[E] = Iterator(x)
 }

@@ -4,7 +4,7 @@ package com.frank.result
  * @param x 该Ok所包含的值
  * @tparam T x的类型
  */
-case class Ok[T,E](x:T) extends Result[T,E]{
+case class Ok[T,E](x:T) extends AnyVal with Result[T,E]  {
   /**
    * Type of this.x
    * for example
@@ -45,10 +45,23 @@ case class Ok[T,E](x:T) extends Result[T,E]{
   def flatMap[U](f: T => IterableOnce[T]):Seq[TypeOf] = {
     this.toSeq.flatMap(f)
   }
-
   /**
    * 创建seq
    * @return seq
    */
   def toSeq: Seq[T] = Seq(x)
+
+  /**
+   * 将该result转为seq后flatten
+   * @param f 函数
+   * @return seq
+   */
+  def flatten(implicit f: T => IterableOnce[T]): Seq[T] =
+    this.toSeq.flatten(f)
+
+  /**
+   * 返回迭代器
+   * @return iterator
+   */
+  def iterator(): Iterator[T] = Iterator(x)
 }
