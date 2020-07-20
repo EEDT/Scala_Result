@@ -1,6 +1,6 @@
 package com.frank.result
 /**
- * 一个为[[_root_.scala.util.Either]]提供了更多特性的库
+ * 一个为[[scala.util.Either]]提供了更多特性的库
  * @tparam T 正常
  * @tparam E 错误
  */
@@ -156,7 +156,7 @@ trait Result[T,E] extends Any{
    * @param f 为Ok则执行的函数
    * @param default 为Err时执行的函数
    * @tparam U 结果
-   * @return [[com.frank.result.Result[T,E]]]
+   * @return [[com.frank.result.Result]]
    */
   def mapOrElse[U](f:T => U, default:E => U):Result[U,U] =
     this match {

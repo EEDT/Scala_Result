@@ -19,7 +19,7 @@ case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
    */
   override type M[B] = Result[TypeOf,B]
   /**
-   * 同[[_root_.scala.util.Either]]中的map方法
+   * 同[[scala.util.Either]]中的map方法
    * @param f 函数
    * @tparam U 返回
    * @return result
