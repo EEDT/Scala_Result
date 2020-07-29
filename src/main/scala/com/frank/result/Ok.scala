@@ -13,17 +13,14 @@ case class Ok[T,E](private val x:T) extends AnyVal with Result[T,E]  {
    * }}}
    */
   override type TypeOf = T
-  /**
-   * return type of map
-   */
-  override type M[B] = Result[B,TypeOf]
+
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
    * @tparam U 返回
    * @return result
    */
-  override def map[U](f: T => U):M[U] = Ok(f(x))
+  override def map[U](f: T => U): Result[U, E] = Ok(f(x))
 
   /**
    * 如果该result为ok且f(x)为true，返回true

@@ -1,4 +1,6 @@
 package com.frank.result
+
+
 /**
  * 一个为[[scala.util.Either]]提供了更多特性的库
  * @tparam T 正常
@@ -6,7 +8,6 @@ package com.frank.result
  */
 trait Result[T,E] extends Any{
   type TypeOf
-  type M[B]
   /**
    * 返回是否为ok
    * @return boolean
@@ -130,7 +131,7 @@ trait Result[T,E] extends Any{
    * @tparam U 返回
    * @return result
    */
-  def map[U](f:TypeOf => U):M[U]
+  def map[U](f:T => U):Result[U,E]
   /**
    * 如果该result为ok且f(x)为true，返回true
    * 否则返回false

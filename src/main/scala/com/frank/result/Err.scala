@@ -14,18 +14,15 @@ case class Err[T, E](private val x: E) extends AnyVal with Result[T, E] {
    * }}}
    */
   override type TypeOf = E
-  /**
-   * return type of map
-   */
-  override type M[B] = Result[TypeOf,B]
+
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
    * @tparam U 返回
    * @return result
    */
-  override def map[U](f: E => U):M[U] = Err(f(x))
-
+  override def map[U](f: T => U): Result[U, E] =
+    this.asInstanceOf[Result[U,E]]
   /**
    * 如果该result为ok且f(x)为true，返回true
    * 否则返回false

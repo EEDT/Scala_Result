@@ -16,6 +16,10 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     val x = Ok(10).map(_ + 1)
     assert(x.contains(11))
   }
+  test("map2"){
+    val ex = Err[Int,Int](100).map(_ + 1)
+    assert(ex == Err(100))
+  }
   test("contains"){
     val x = Ok(10)
     assert(x.contains(10))
