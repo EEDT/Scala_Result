@@ -1,5 +1,7 @@
 package com.frank.result
 
+import scala.util._
+
 
 /**
  * 一个为[[scala.util.Either]]提供了更多特性的库
@@ -7,6 +9,7 @@ package com.frank.result
  * @tparam E 错误
  */
 trait Result[T,E] extends Any{
+
   type TypeOf
   /**
    * 返回是否为ok
@@ -198,4 +201,28 @@ trait Result[T,E] extends Any{
    */
   def toSeq:Seq[TypeOf]
   protected def creatUnitValue() = ()
+
+  /**
+   * 创建一个Try
+   * @return try
+   */
+  def toTry:Try[T] = this match {
+    case Err(x) => Failure(x.asInstanceOf[Throwable])
+    case Ok(x) => Success(x)
+  }
+
+  /**
+   * 创建一个Either
+   * @return either
+   */
+  def toEither:Either[E,T] = this match {
+    case Err(x) => Left(x)
+    case Ok(x) => Right(x)
+  }
+}
+object Result{
+  def fromEither[A,B](x:scala.util.Either[B,A]):Result[A,B] = x match {
+    case Left(value) => Err(value)
+    case Right(value) => Ok(value)
+  }
 }

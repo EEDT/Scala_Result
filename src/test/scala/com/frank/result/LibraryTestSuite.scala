@@ -71,8 +71,36 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     val result = toInteger("123a").unwrapOrDefault(123)
     assert(result == 123)
   }
-  test("or_else"){
-    val result = Err[Int,Int](10)
+  test("or_else") {
+    val result = Err[Int, Int](10)
     assert(result.unwrapOrElse(_ => 10) == 10)
+  }
+  test("toSeq"){
+    val result = Ok(20)
+    assert(result.toSeq == Seq(20))
+  }
+  test("toSeq2"){
+    val result = Err(25)
+    assert(result.toSeq == Seq(25))
+  }
+  test("map_or_else"){
+    def getValue(s:Any):Result[Int,String] = s match {
+      case x:Int => Ok(x)
+      case x:String => Err(x)
+      case _ => throw new IllegalArgumentException("not int or string")
+    }
+    assert(
+      getValue(100).mapOrElse(_+1,_.toUpperCase).contains(101) &&
+      getValue("string").mapOrElse(_+1,_.toUpperCase()).containsErr("STRING")
+    )
+  }
+  test("fromEither"){
+    assert(
+      Result.fromEither(Left(10)).containsErr(10) &&
+      Result.fromEither(Right(10)).contains(10)
+    )
+  }
+  test("toEither"){
+    assert(Ok(20).toEither == Right(20))
   }
 }

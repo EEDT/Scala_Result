@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.frank.result.LibraryTestSuite" tests="18" skipped="0" failures="0" errors="0" timestamp="2020-07-29T03:11:15" hostname="easypowerdeMacBook-Pro.local" time="0.256">
+<testsuite name="com.frank.result.LibraryTestSuite" tests="23" skipped="0" failures="0" errors="0" timestamp="2020-07-29T04:57:20" hostname="easypowerdeMacBook-Pro.local" time="0.179">
   <properties/>
-  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.047"/>
-  <testcase name="map" classname="com.frank.result.LibraryTestSuite" time="0.009"/>
-  <testcase name="map2" classname="com.frank.result.LibraryTestSuite" time="0.008"/>
-  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.016"/>
+  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.031"/>
+  <testcase name="map" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="map2" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
+  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
   <testcase name="containsErr" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.029"/>
-  <testcase name="foreach" classname="com.frank.result.LibraryTestSuite" time="0.014"/>
-  <testcase name="unwrap" classname="com.frank.result.LibraryTestSuite" time="0.005"/>
+  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.013"/>
+  <testcase name="foreach" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="unwrap" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <testcase name="exception" classname="com.frank.result.LibraryTestSuite" time="0.006"/>
-  <testcase name="isOk" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
+  <testcase name="isOk" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
   <testcase name="isErr" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="err" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
-  <testcase name="unwrap err" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="except err" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
-  <testcase name="unwrap or default" classname="com.frank.result.LibraryTestSuite" time="0.005"/>
+  <testcase name="err" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
+  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.01"/>
+  <testcase name="unwrap err" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="except err" classname="com.frank.result.LibraryTestSuite" time="0.007"/>
+  <testcase name="unwrap or default" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <testcase name="or_else" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
+  <testcase name="toSeq" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="toSeq2" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
+  <testcase name="map_or_else" classname="com.frank.result.LibraryTestSuite" time="0.01"/>
+  <testcase name="fromEither" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="toEither" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
