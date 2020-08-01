@@ -61,4 +61,5 @@ case class Ok[T,E](private val x:T) extends AnyVal with Result[T,E]  {
    * @return iterator
    */
   def iterator(): Iterator[T] = Iterator(x)
+
 }

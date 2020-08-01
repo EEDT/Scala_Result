@@ -8,7 +8,7 @@ import scala.util._
  * @tparam T 正常
  * @tparam E 错误
  */
-trait Result[T,E] extends Any{
+trait Result[+T,+E] extends Any {
 
   type TypeOf
   /**
@@ -16,15 +16,15 @@ trait Result[T,E] extends Any{
    * @return boolean
    */
   def isOK:Boolean = this match {
-    case _: Ok[_,_] => true
-    case _:Err[_,_] => false
+    case Ok(_) => true
+    case Err(_) => false
   }
   /**
    * 测试一个result是否包含给定值且该result为OK
    * @param i 测试值
    * @return boolean
    */
-  def contains(i:T):Boolean = this match {
+  def contains[M >: T](i:M):Boolean = this match {
     case Ok(x) => x == i
     case _ => false
   }
@@ -33,7 +33,7 @@ trait Result[T,E] extends Any{
    * @param x 测试值
    * @return boolean
    */
-  def containsErr(x:E):Boolean = this match {
+  def containsErr[M >: T](x:M):Boolean = this match {
     case Err(x) => x == x
     case Ok(_) => false
   }
@@ -42,8 +42,8 @@ trait Result[T,E] extends Any{
    * @return boolean
    */
   def isErr:Boolean = this match {
-    case _: Ok[_, _] => false
-    case _: Err[_, _] => true
+    case Err(_) => true
+    case _ => false
   }
 
   /**
@@ -90,7 +90,7 @@ trait Result[T,E] extends Any{
   /**
    * 如果不是ok，返回default，否则返回ok中包含的值
    */
-  def unwrapOrDefault(default:T):T = try this.unwrap catch {
+  def unwrapOrDefault[M >: T](default:M):M = try this.unwrap catch {
     case _:RuntimeException => default
   }
 
@@ -99,7 +99,7 @@ trait Result[T,E] extends Any{
    * @param e 函数
    * @return T
    */
-  def unwrapOrElse(e:E => T):T =
+  def unwrapOrElse[M1 >: T,M2 >: E](e:M2 => M1):M1 =
     this match {
       case Err(x) => e(x)
       case Ok(x) => x
@@ -109,7 +109,7 @@ trait Result[T,E] extends Any{
    * @param elseValue 否则返回的值
    * @return t
    */
-  def okOrElse(elseValue:T):T = this match {
+  def okOrElse[M >: T](elseValue:M):M = this match {
     case Err(_) => elseValue
     case Ok(x) =>x
   }
@@ -135,6 +135,17 @@ trait Result[T,E] extends Any{
    * @return result
    */
   def map[U](f:T => U):Result[U,E]
+
+  /**
+   *
+   * @param f 函数
+   * @tparam U 返回
+   * @return [[com.frank.result.Result]]
+   */
+  def mapErr[U](f:E => U):Result[T,U] = this match {
+    case Err(x) => Err(f(x))
+    case Ok(x) => Ok(x).asInstanceOf[Result[T,U]]
+  }
   /**
    * 如果该result为ok且f(x)为true，返回true
    * 否则返回false
@@ -173,7 +184,7 @@ trait Result[T,E] extends Any{
    * @param result 否则的值
    * @return [[com.frank.result.Result]]
    */
-  def or(result: Result[T,E]):Result[T,E] =
+  def or[M1 >: T,M2 >: E](result: Result[M1,M2]):Result[M1,M2] =
     this match {
       case Err(_) => result
       case _ => this
@@ -184,7 +195,7 @@ trait Result[T,E] extends Any{
    * @param func 函数
    * @return [[com.frank.result.Result]]
    */
-  def orElse(func:E => Result[T,E]):Result[T,E] =
+  def orElse[M1 >: T,M2 >: E](func:M2 => Result[M1,M2]):Result[M1,M2] =
     this match {
       case Err(x) => func(x)
       case Ok(_) => this
