@@ -4,7 +4,7 @@ package com.frank.result
  * @param x 该Ok所包含的值
  * @tparam T x的类型
  */
-case class Ok[T,E](private val x:T) extends AnyVal with Result[T,E]  {
+final case class Ok[T,E](x:T) extends AnyVal with Result[T,E]  {
   /**
    * Type of this.x
    * for example

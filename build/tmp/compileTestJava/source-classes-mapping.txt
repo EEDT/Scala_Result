@@ -1,2 +1,0 @@
-com/frank/result/Tester.java
- com.frank.result.Tester

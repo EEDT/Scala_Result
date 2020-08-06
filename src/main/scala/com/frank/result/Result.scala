@@ -1,5 +1,6 @@
 package com.frank.result
 
+import scala.language.implicitConversions
 import scala.util._
 
 
@@ -16,7 +17,7 @@ trait Result[+T,+E] extends Any {
    * @return boolean
    */
   def isOK:Boolean = this match {
-    case Ok(_) => true
+    case Ok(_)  => true
     case Err(_) => false
   }
   /**
@@ -26,7 +27,7 @@ trait Result[+T,+E] extends Any {
    */
   def contains[M >: T](i:M):Boolean = this match {
     case Ok(x) => x == i
-    case _ => false
+    case _     => false
   }
   /**
    * 测试一个result是否包含给定值且该result为Err
@@ -35,7 +36,7 @@ trait Result[+T,+E] extends Any {
    */
   def containsErr[M >: T](x:M):Boolean = this match {
     case Err(x) => x == x
-    case Ok(_) => false
+    case Ok(_)  => false
   }
   /**
    * 是否为err
@@ -43,7 +44,7 @@ trait Result[+T,+E] extends Any {
    */
   def isErr:Boolean = this match {
     case Err(_) => true
-    case _ => false
+    case _      => false
   }
 
   /**
@@ -52,31 +53,31 @@ trait Result[+T,+E] extends Any {
    */
   def err:Option[E] = this match {
     case Err(x) => Some(x)
-    case _ => None
+    case _      => None
   }
   /**
-   * 如果不是ok，抛出[[_root_.java.lang.RuntimeException]]
+   * 如果不是ok，抛出[[java.lang.RuntimeException]]
    * @param msg 异常信息
    */
   def exception(msg:String):Unit = this match {
     case Err(_) => throw new RuntimeException(msg)
-    case Ok(_) => creatUnitValue()
+    case Ok(_)  => creatUnitValue()
   }
 
   /**
-   * 如果不是err，抛出[[_root_.java.lang.RuntimeException]]
+   * 如果不是err，抛出[[java.lang.RuntimeException]]
    * @param msg 异常信息
    */
   def exceptionErr(msg:String):Unit = this match {
     case Err(_) => creatUnitValue()
-    case _ => throw new RuntimeException(msg)
+    case _      => throw new RuntimeException(msg)
   }
   /**
-   * 如果不是ok，抛出[[_root_.java.lang.RuntimeException]]，否则返回ok中包含的值
+   * 如果不是ok，抛出[[java.lang.RuntimeException]]，否则返回ok中包含的值
    * @return
    */
   def unwrap:T = this match {
-    case Ok(x) => x
+    case Ok(x)  => x
     case Err(_) => throw new RuntimeException("not ok")
   }
   /**
@@ -85,7 +86,7 @@ trait Result[+T,+E] extends Any {
    */
   def unwrapErr:E = this match {
     case Err(x) => x
-    case Ok(_) => throw new RuntimeException("not err")
+    case Ok(_)  => throw new RuntimeException("not err")
   }
   /**
    * 如果不是ok，返回default，否则返回ok中包含的值
@@ -102,7 +103,7 @@ trait Result[+T,+E] extends Any {
   def unwrapOrElse[M1 >: T,M2 >: E](e:M2 => M1):M1 =
     this match {
       case Err(x) => e(x)
-      case Ok(x) => x
+      case Ok(x)  => x
     }
   /**
    * 如果是OK，返回所包含的值，否则返回elseValue
@@ -111,7 +112,7 @@ trait Result[+T,+E] extends Any {
    */
   def okOrElse[M >: T](elseValue:M):M = this match {
     case Err(_) => elseValue
-    case Ok(x) =>x
+    case Ok(x)  => x
   }
 
   /**
@@ -120,7 +121,7 @@ trait Result[+T,+E] extends Any {
    */
   def ok:Option[T] = this match {
     case Ok(x) => Some(x)
-    case _ => None
+    case _     => None
   }
 
   /**
@@ -176,7 +177,7 @@ trait Result[+T,+E] extends Any {
   def mapOrElse[U](f:T => U, default:E => U):Result[U,U] =
     this match {
       case Err(x) => Err(default(x))
-      case Ok(x) => Ok(f(x))
+      case Ok(x)  => Ok(f(x))
     }
 
   /**
@@ -204,7 +205,7 @@ trait Result[+T,+E] extends Any {
    * 对于该result所包含的值执行f()
    * @param f 函数
    */
-  def foreach(f:TypeOf => Unit):Unit
+  def foreach(f:T => Unit):Unit
 
   /**
    * 创建seq
@@ -217,10 +218,11 @@ trait Result[+T,+E] extends Any {
    * 创建一个Try
    * @return try
    */
-  def toTry:Try[T] = this match {
-    case Err(x) => Failure(x.asInstanceOf[Throwable])
-    case Ok(x) => Success(x)
-  }
+  def toTry:Try[T] =
+    this match {
+      case Err(x) => Failure(x.asInstanceOf[Throwable])
+      case Ok(x)  => Success(x)
+    }
 
   /**
    * 创建一个Either
@@ -228,12 +230,22 @@ trait Result[+T,+E] extends Any {
    */
   def toEither:Either[E,T] = this match {
     case Err(x) => Left(x)
-    case Ok(x) => Right(x)
+    case Ok(x)  => Right(x)
   }
 }
 object Result{
   def fromEither[A,B](x:scala.util.Either[B,A]):Result[A,B] = x match {
-    case Left(value) => Err(value)
+    case Left(value)  => Err(value)
     case Right(value) => Ok(value)
+  }
+
+  /**
+   * 将either转为result
+   */
+  implicit def either2Result[A,B](x:scala.util.Either[B,A]) =
+    Result.fromEither(x)
+  implicit def result2Either[A,B](x:Result[A,B]) = x match {
+    case Err(x) => Left(x)
+    case Ok(x)  => Right(x)
   }
 }

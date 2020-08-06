@@ -1,8 +1,11 @@
 package com.frank.result
+
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.diagrams._
 import org.junit.runner.RunWith
 import org.scalatestplus.junit.JUnitRunner
+import scala.util.{Failure, Success, Try}
+import Result.{either2Result, fromEither, result2Either}
 
 @RunWith(classOf[JUnitRunner])
 class LibraryTestSuite extends AnyFunSuite with Diagrams {
@@ -102,5 +105,18 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
   }
   test("toEither"){
     assert(Ok(20).toEither == Right(20))
+  }
+  test("implicits"){
+    def parseInt(x:String): Either[Throwable, Int] = Try(x.toInt) match {
+      case Failure(exception) =>  Left(exception)
+      case Success(value)     =>  Right(value)
+    }
+    val x = parseInt("123").mapOrElse(x => x,_ => 0).unwrap
+    assertResult(123)(x)
+  }
+  test("implicits2"){
+    val testSuite = Ok(20)
+    val testSuite2 = fromEither(testSuite)
+    assert(testSuite2 == Ok(20))
   }
 }

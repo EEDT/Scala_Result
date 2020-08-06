@@ -5,7 +5,7 @@ package com.frank.result
  * @param x 该Err所包含的值
  * @tparam E x的类型
  */
-case class Err[T,E](private val x: E) extends AnyVal with Result[T, E] {
+final case class Err[T,E](x: E) extends AnyVal with Result[T, E]{
   /**
    * Type of this.x
    * for example
@@ -14,7 +14,6 @@ case class Err[T,E](private val x: E) extends AnyVal with Result[T, E] {
    * }}}
    */
   override type TypeOf = E
-
   /**
    * 同[[scala.util.Either]]中的map方法
    * @param f 函数
@@ -35,7 +34,7 @@ case class Err[T,E](private val x: E) extends AnyVal with Result[T, E] {
    * 对于该result所包含的值执行f()
    * @param f 函数
    */
-  def foreach(f: E => Unit): Unit = f(x)
+  def foreach(f: T => Unit): Unit = ()
 
   /**
    * 将该result转为seq后flatmap
