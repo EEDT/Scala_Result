@@ -91,8 +91,9 @@ trait Result[+T,+E] extends Any {
   /**
    * 如果不是ok，返回default，否则返回ok中包含的值
    */
-  def unwrapOrDefault[M >: T](default:M):M = try this.unwrap catch {
-    case _:RuntimeException => default
+  def unwrapOrDefault[M >: T](default:M):M = this match {
+    case Err(_) => default
+    case Ok(x)  => x
   }
 
   /**
@@ -158,14 +159,34 @@ trait Result[+T,+E] extends Any {
   /**
    * 将该result转为seq后flatmap
    */
-  def flatMap[U](f:TypeOf => IterableOnce[TypeOf]):Seq[TypeOf]
+  def flatMap[M >: T,U](f:T => IterableOnce[M]):Seq[M] = this match {
+    case Err(_) => Seq()
+    case Ok(x) => Seq(x).flatMap(f)
+  }
 
+  /**
+   * 如果是ok，执行seq(x).flatMap，否则执行seq(x).flatMap(e)
+   * @param f 函数
+   * @param e 函数
+   * @return Seq[T]
+   */
+  def flatMapOrElse[M >: T,ME >: E](
+    f:T => IterableOnce[M],
+    e:E => IterableOnce[M]
+  ):Seq[M] =
+    this match {
+      case Err(x) => Seq(x).flatMap(e)
+      case Ok(x)  => Seq(x).flatMap(f)
+    }
   /**
    * 将该result转为seq后flatten
    * @param f 函数
    * @return seq
    */
-  def flatten(implicit f:TypeOf => IterableOnce[TypeOf]):Seq[TypeOf]
+  def flatten[M >: T](implicit f:T => IterableOnce[M]):Seq[M] = this match {
+    case Err(_) => Seq()
+    case Ok(x)  => Seq(x).flatten(f)
+  }
 
   /**
    * 如果该result为Ok则执行函数f，否则执行函数default
@@ -206,12 +227,16 @@ trait Result[+T,+E] extends Any {
    * @param f 函数
    */
   def foreach(f:T => Unit):Unit
-
+  def foreachOrElse(f:T => Unit,default:E => Unit) =
+    this match {
+      case Err(x) => default(x)
+      case Ok(x) => f(x)
+    }
   /**
    * 创建seq
    * @return seq
    */
-  def toSeq:Seq[TypeOf]
+  def toSeq:Seq[T]
   protected def creatUnitValue() = ()
 
   /**

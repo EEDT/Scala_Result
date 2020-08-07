@@ -35,26 +35,12 @@ final case class Ok[T,E](x:T) extends AnyVal with Result[T,E]  {
    * @param f 函数
    */
   def foreach(f: T => Unit): Unit = f(x)
-
-  /**
-   * 将该result转为seq后flatmap
-   */
-  def flatMap[U](f: T => IterableOnce[T]):Seq[TypeOf] = {
-    this.toSeq.flatMap(f)
-  }
   /**
    * 创建seq
    * @return seq
    */
   def toSeq: Seq[T] = Seq(x)
 
-  /**
-   * 将该result转为seq后flatten
-   * @param f 函数
-   * @return seq
-   */
-  def flatten(implicit f: T => IterableOnce[T]): Seq[T] =
-    this.toSeq.flatten(f)
 
   /**
    * 返回迭代器

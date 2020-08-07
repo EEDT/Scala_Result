@@ -37,25 +37,10 @@ final case class Err[T,E](x: E) extends AnyVal with Result[T, E]{
   def foreach(f: T => Unit): Unit = ()
 
   /**
-   * 将该result转为seq后flatmap
-   */
-  def flatMap[U](f: E => IterableOnce[E]):Seq[TypeOf] = {
-    this.toSeq.flatMap(f)
-  }
-
-  /**
    * 创建seq
    * @return seq
    */
-  def toSeq: Seq[E] = Seq(x)
-
-  /**
-   * 将该result转为seq后flatten
-   * @param f 函数
-   * @return seq
-   */
-  def flatten(implicit f: E => IterableOnce[E]): Seq[E] =
-    this.toSeq.flatten(f)
+  def toSeq: Seq[T] = Seq()
 
   /**
    * 返回迭代器

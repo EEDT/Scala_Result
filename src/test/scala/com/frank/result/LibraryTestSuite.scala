@@ -84,7 +84,7 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
   }
   test("toSeq2"){
     val result = Err(25)
-    assert(result.toSeq == Seq(25))
+    assert(result.toSeq == Seq())
   }
   test("map_or_else"){
     def getValue(s:Any):Result[Int,String] = s match {
@@ -118,5 +118,17 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     val testSuite = Ok(20)
     val testSuite2 = fromEither(testSuite)
     assert(testSuite2 == Ok(20))
+  }
+  test("flatMapOrElse"){
+    val testSuiteCreator: String => Result[Int, String] = (x:String) =>
+      try Ok(x.toInt)
+      catch {
+        case _:Exception => Err(x)
+      }
+    val s1 = testSuiteCreator("123")
+    val s2 = testSuiteCreator("bad string")
+    val t1 = s1.flatMapOrElse(x => Seq(x),_ => Seq(0)) == Seq(123)
+    val t2 = s2.flatMapOrElse(x => Seq(x),_ => Seq(0)) == Seq(0)
+    assert(t1 && t2)
   }
 }
