@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.frank.result.LibraryTestSuite" tests="25" skipped="0" failures="0" errors="0" timestamp="2020-08-06T01:26:32" hostname="easypowerdeMacBook-Pro.local" time="0.124">
+<testsuite name="com.frank.result.LibraryTestSuite" tests="26" skipped="0" failures="0" errors="0" timestamp="2020-08-07T02:37:00" hostname="easypowerdeMacBook-Pro.local" time="0.098">
   <properties/>
-  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.031"/>
-  <testcase name="map" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="exists" classname="com.frank.result.LibraryTestSuite" time="0.027"/>
+  <testcase name="map" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <testcase name="map2" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
-  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="containsErr" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
+  <testcase name="contains" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="containsErr" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="flatMap" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
   <testcase name="foreach" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <testcase name="unwrap" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <testcase name="exception" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <testcase name="isOk" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
   <testcase name="isErr" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
-  <testcase name="err" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
-  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
-  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
+  <testcase name="err" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="ok" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="ok_else" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
   <testcase name="unwrap err" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="except err" classname="com.frank.result.LibraryTestSuite" time="0.007"/>
+  <testcase name="except err" classname="com.frank.result.LibraryTestSuite" time="0.004"/>
   <testcase name="unwrap or default" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="or_else" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="or_else" classname="com.frank.result.LibraryTestSuite" time="0.002"/>
   <testcase name="toSeq" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
   <testcase name="toSeq2" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="map_or_else" classname="com.frank.result.LibraryTestSuite" time="0.017"/>
-  <testcase name="fromEither" classname="com.frank.result.LibraryTestSuite" time="0.012"/>
-  <testcase name="toEither" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
-  <testcase name="implicits" classname="com.frank.result.LibraryTestSuite" time="0.014"/>
-  <testcase name="implicits2" classname="com.frank.result.LibraryTestSuite" time="0.001"/>
+  <testcase name="map_or_else" classname="com.frank.result.LibraryTestSuite" time="0.011"/>
+  <testcase name="fromEither" classname="com.frank.result.LibraryTestSuite" time="0.003"/>
+  <testcase name="toEither" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="implicits" classname="com.frank.result.LibraryTestSuite" time="0.007"/>
+  <testcase name="implicits2" classname="com.frank.result.LibraryTestSuite" time="0.0"/>
+  <testcase name="flatMapOrElse" classname="com.frank.result.LibraryTestSuite" time="0.005"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

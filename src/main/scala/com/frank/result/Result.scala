@@ -171,12 +171,12 @@ trait Result[+T,+E] extends Any {
    * @return Seq[T]
    */
   def flatMapOrElse[M >: T,ME >: E](
-    f:T => IterableOnce[M],
-    e:E => IterableOnce[M]
+    f: T => IterableOnce[M],
+    e: E => IterableOnce[M]
   ):Seq[M] =
     this match {
-      case Err(x) => Seq(x).flatMap(e)
-      case Ok(x)  => Seq(x).flatMap(f)
+      case Err(x: E) => Seq(x).flatMap(e)
+      case Ok(x: T)  => Seq(x).flatMap(f)
     }
   /**
    * 将该result转为seq后flatten
