@@ -46,6 +46,6 @@ final case class Err[T,E](x: E) extends AnyVal with Result[T, E]{
    * 返回迭代器
    * @return iterator
    */
-  def iterator(): Iterator[E] = Iterator(x)
+  def iterator(): Iterator[E] = Iterator()
 
 }
