@@ -13,12 +13,10 @@ plugins {
 repositories {
   // Use jcenter for resolving dependencies.
   // You can declare any Maven/Ivy/file repository here.
-  mavenCentral()
   mavenLocal()
   maven{
     url 'https://mirrors.huaweicloud.com/repository/maven/'
   }
-  jcenter()
 }
 
 dependencies {
