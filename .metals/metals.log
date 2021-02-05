@@ -11,3 +11,15 @@
 警告: Unmatched cancel notification for request id 6
 [0m2021.02.05 15:05:51 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
 [0m2021.02.05 15:05:54 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+[0m2021.02.05 15:06:14 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+[0m2021.02.05 15:06:18 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+[0m2021.02.05 15:06:57 INFO  shutting down Metals[0m
+[0m2021.02.05 15:07:12 INFO  Started: Metals version 0.9.10 in workspace '/Users/frank/Desktop/DEV/Scala_Result' for client vscode 1.52.1.[0m
+[0m2021.02.05 15:07:17 INFO  time: initialize in 4.98s[0m
+[0m2021.02.05 15:07:18 WARN  Build server is not auto-connectable.[0m
+[0m2021.02.05 15:07:18 INFO  skipping build import with status 'Requested'[0m
+[0m2021.02.05 15:07:56 INFO  shutting down Metals[0m
+[0m2021.02.05 15:08:13 INFO  Started: Metals version 0.9.10 in workspace '/Users/frank/Desktop/DEV/Scala_Result' for client vscode 1.52.1.[0m
+[0m2021.02.05 15:08:19 INFO  time: initialize in 5.55s[0m
+[0m2021.02.05 15:08:20 WARN  Build server is not auto-connectable.[0m
+[0m2021.02.05 15:08:20 INFO  skipping build import with status 'Requested'[0m
