@@ -1,5 +1,7 @@
 package com.frank.result
 
+import com.frank.result.Result.result2Either
+
 import scala.language.implicitConversions
 import scala.util._
 
@@ -186,10 +188,10 @@ trait Result[+T, +E] extends Any {
   /**
    * 将该result转为seq后flatmap
    */
-  def flatMap[M >: T, U >: E](f: T => Result[M, U]): Result[M, U] = this match {
-    case Err(_) => this.asInstanceOf[Result[M, U]]
-    case Ok(x) => f(x)
-  }
+  def flatMap[M >: T, U >: E](f: T => Result[M, U]): Result[M,U] =
+    Result.fromEither(this.toEither.flatMap(x => result2Either(f(x))))
+
+    
 
   /**
    * 如果是ok，执行seq(x).flatMap，否则执行seq(x).flatMap(e)

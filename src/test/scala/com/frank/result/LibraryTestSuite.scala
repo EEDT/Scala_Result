@@ -147,8 +147,7 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
       for {
         a <- saveDiv(6, 3)
         b <- saveDiv(6, 2)
-        c <- saveDiv(1, 0)
-      } yield a + b + c
+      } yield a + b
 
     assert(res == Ok(5))
   }
