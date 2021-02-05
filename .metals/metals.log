@@ -3,3 +3,11 @@
 [0m2021.02.05 15:04:54 WARN  Build server is not auto-connectable.[0m
 2月 05, 2021 3:05:09 下午 org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
 信息: Unsupported notification method: $/setTraceNotification
+[0m2021.02.05 15:05:45 INFO  no build target: using presentation compiler with only scala-library[0m
+[0m2021.02.05 15:05:49 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+2月 05, 2021 3:05:49 下午 org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+警告: Unmatched cancel notification for request id 1
+2月 05, 2021 3:05:49 下午 org.eclipse.lsp4j.jsonrpc.RemoteEndpoint handleCancellation
+警告: Unmatched cancel notification for request id 6
+[0m2021.02.05 15:05:51 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+[0m2021.02.05 15:05:54 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
