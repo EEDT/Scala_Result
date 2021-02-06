@@ -17207,3 +17207,11 @@ file%3A%2F%2F%2FUsers%2Ffrank%2FDesktop%2FDEV%2FScala_Result%2Fsrc%2Fmain%2Fscal
 something's wrong: no file:///Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala in com.frank.result.Result[M,<error>]RangePosition(file:///Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala, 3450, 3450, 3468)
 [0m2021.02.06 08:59:16 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
 [0m2021.02.06 08:59:27 WARN  no build target for: /Users/frank/Desktop/DEV/Scala_Result/src/main/scala/com/frank/result/Result.scala[0m
+[0m2021.02.06 09:01:54 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:01:58 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:07 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:07 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:08 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:10 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:11 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
+[0m2021.02.06 09:02:22 INFO  shutting down Metals[0m

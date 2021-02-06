@@ -4,7 +4,6 @@
 # Ignore Gradle build output directory
 build
 gradle
-.matels
 
 /gradlew
 /gradlew.bat
@@ -12,3 +11,4 @@ gradle
 .metals/metals.h2.db
 .metals/metals.lock.db
 .metals/metals.log
+/.metals/
