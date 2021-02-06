@@ -6,14 +6,6 @@ package com.frank.result
   */
 final case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
 
-  /** Type of this.x
-    * for example
-    * {{{
-    *   override def map[U](f: E => U):M[U] = Err(f(x))
-    * }}}
-    */
-  override type TypeOf = E
-
   /** 同[[scala.util.Either]]中的map方法
     * @param f 函数
     * @tparam U 返回
@@ -27,7 +19,7 @@ final case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
     * @param f 函数
     * @return
     */
-  def exists(f: E => Boolean): Boolean = f(x)
+  def exists(f: T => Boolean): Boolean = false
 
   /** 对于该result所包含的值执行f()
     * @param f 函数
@@ -42,6 +34,5 @@ final case class Err[T, E](x: E) extends AnyVal with Result[T, E] {
   /** 返回迭代器
     * @return iterator
     */
-  def iterator(): Iterator[E] = Iterator()
-
+  def iterator(): Iterator[T] = Iterator()
 }

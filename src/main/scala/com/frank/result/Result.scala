@@ -12,8 +12,6 @@ import scala.util._
   */
 trait Result[+T, +E] extends Any {
 
-  type TypeOf
-
   /** 返回是否为ok
     *
     * @return boolean
@@ -138,7 +136,7 @@ trait Result[+T, +E] extends Any {
     *
     * @return iterator
     */
-  def iterator(): Iterator[TypeOf]
+  def iterator(): Iterator[T]
 
   /** 同[[scala.util.Either]]中的map方法
     *
@@ -163,7 +161,7 @@ trait Result[+T, +E] extends Any {
     * @param f 函数
     * @return
     */
-  def exists(f: TypeOf => Boolean): Boolean
+  def exists(f: T => Boolean): Boolean
 
   /** 将该result转为seq后flatmap
     */

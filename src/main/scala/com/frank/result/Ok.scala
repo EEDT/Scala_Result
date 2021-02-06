@@ -6,14 +6,6 @@ package com.frank.result
   */
 final case class Ok[T, E](x: T) extends AnyVal with Result[T, E] {
 
-  /** Type of this.x
-    * for example
-    * {{{
-    *   override def map[U](f: E => U):M[U] = Err(f(x))
-    * }}}
-    */
-  override type TypeOf = T
-
   /** 同[[scala.util.Either]]中的map方法
     *
     * @param f 函数
