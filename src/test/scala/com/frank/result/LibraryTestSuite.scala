@@ -68,9 +68,11 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     assertThrows[RuntimeException](Ok(10).exceptionErr("error"))
   }
   test("unwrap or default") {
-    def toInteger(s: String): Result[Int, NumberFormatException] = try Ok(s.toInt) catch {
-      case ex: NumberFormatException => Err(ex)
-    }
+    def toInteger(s: String): Result[Int, NumberFormatException] =
+      try Ok(s.toInt)
+      catch {
+        case ex: NumberFormatException => Err(ex)
+      }
 
     val result = toInteger("123a").unwrapOrDefault(123)
     assert(result == 123)
@@ -89,14 +91,16 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
   }
   test("map_or_else") {
     def getValue(s: Any): Result[Int, String] = s match {
-      case x: Int => Ok(x)
+      case x: Int    => Ok(x)
       case x: String => Err(x)
-      case _ => throw new IllegalArgumentException("not int or string")
+      case _         => throw new IllegalArgumentException("not int or string")
     }
 
     assert(
       getValue(100).mapOrElse(_ + 1, _.toUpperCase).contains(101) &&
-        getValue("string").mapOrElse(_ + 1, _.toUpperCase()).containsErr("STRING")
+        getValue("string")
+          .mapOrElse(_ + 1, _.toUpperCase())
+          .containsErr("STRING")
     )
   }
   test("fromEither") {
@@ -111,7 +115,7 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
   test("implicits") {
     def parseInt(x: String): Either[Throwable, Int] = Try(x.toInt) match {
       case Failure(exception) => Left(exception)
-      case Success(value) => Right(value)
+      case Success(value)     => Right(value)
     }
 
     val x = parseInt("123").mapOrElse(x => x, _ => 0).unwrap
@@ -126,14 +130,18 @@ class LibraryTestSuite extends AnyFunSuite with Diagrams {
     val x: Result[Int, Int] = Ok(1)
     val y: Result[Int, Int] = Err(2)
 
-    assert(x.flatMapOrElse(
-      xs => Ok(xs + 1),
-      ys => Err(ys)
-    ) == Ok(2))
-    assert(y.flatMapOrElse(
-      xs => Ok(xs),
-      ys => Ok(ys)
-    ) == Ok(2))
+    assert(
+      x.flatMapOrElse(
+        xs => Ok(xs + 1),
+        ys => Err(ys)
+      ) == Ok(2)
+    )
+    assert(
+      y.flatMapOrElse(
+        xs => Ok(xs),
+        ys => Ok(ys)
+      ) == Ok(2)
+    )
   }
 
   test("using examples") {
