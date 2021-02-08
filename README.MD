@@ -9,7 +9,7 @@
 然后在你的gradle项目的`build.gradle`中加入
 
 ```groovy
-implementation file("path_of_reslt_jar/scala_result.jar")
+implementation file("path_of_result_jar/scala_result.jar")
 ```
 
 ## 文档

@@ -1,7 +1,5 @@
 package com.frank.result
 
-import com.frank.result.Result.result2Either
-
 import scala.language.implicitConversions
 import scala.util._
 
@@ -163,7 +161,7 @@ trait Result[+T, +E] extends Any {
    */
   def exists(f: T => Boolean): Boolean
 
-  /** 将该result转为seq后flatmap
+  /** flatMap 该result
    */
   def flatMap[M >: T, U >: E](f: T => Result[M, U]): Result[M, U] =
     this match {
@@ -171,7 +169,7 @@ trait Result[+T, +E] extends Any {
       case _ => this.asInstanceOf[Result[M, U]]
     }
 
-  /** 如果是ok，执行seq(x).flatMap，否则执行seq(x).flatMap(e)
+  /** 如果x是ok，执行x.flatMap，否则执行x.flatMap(e)
    *
    * @param f 函数
    * @param e 函数
