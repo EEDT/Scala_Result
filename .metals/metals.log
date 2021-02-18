@@ -17215,3 +17215,6 @@ something's wrong: no file:///Users/frank/Desktop/DEV/Scala_Result/src/main/scal
 [0m2021.02.06 09:02:10 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
 [0m2021.02.06 09:02:11 WARN  Unable to produce semanticdb for /Users/frank/Desktop/DEV/Scala_Result/build.gradle[0m
 [0m2021.02.06 09:02:22 INFO  shutting down Metals[0m
+[0m2021.02.18 14:41:55 INFO  Started: Metals version 0.9.10 in workspace '/Users/frank/Desktop/DEV/Scala_Result' for client vscode 1.52.1.[0m
+[0m2021.02.18 14:42:04 INFO  time: initialize in 8.52s[0m
+[0m2021.02.18 14:42:05 WARN  Build server is not auto-connectable.[0m
