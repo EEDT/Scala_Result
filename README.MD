@@ -8,7 +8,7 @@
 
 下载 [result.jar](https://github.com/EEDT/Scala_Result/releases/download/2.5.1/Scala_Result.jar)，然后把他放在一个你喜欢的地方，我们把它叫做`path_of_reslt_jar`。
 
-为什么没有maven repo或者GitHub package呢？这样就够用了，~~不依赖第三方哦~~。
+为什么没有maven repo或者GitHub package呢？这样就够用了，~~因为不依赖第三方哦~~。
 
 然后在你的gradle项目的`build.gradle`中加入
 
